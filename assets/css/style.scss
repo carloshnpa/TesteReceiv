@@ -1,0 +1,176 @@
+$primary: rgb(255, 75, 20);
+$secondary: rgb(30, 32, 48);
+@import url('https://fonts.googleapis.com/css?family=Anton|Roboto&display=swap');
+html,
+body {
+    margin: 0;
+}
+
+body {
+    background: rgb(65, 119, 145);
+    font-family: 'Roboto', sans-serif;
+}
+
+.navbar {
+    a {
+        img {
+            width: 200px;
+        }
+    }
+    ul {
+        margin: 0 auto;
+        li.active {
+            a {
+                color: $primary !important;
+            }
+        }
+        li.dropdown {
+            a.dropdown-item {
+                &:hover {
+                    background-color: $secondary;
+                    color: white;
+                }
+            }
+        }
+    }
+    button {
+        border-color: $secondary !important;
+        color: $secondary;
+        &:hover {
+            color: white;
+            background-color: $primary !important;
+            border-color: $primary !important;
+        }
+    }
+}
+
+.cards-container {
+    padding: 3rem;
+    a {
+        text-decoration: none;
+        &:hover {
+            .info-box {
+                box-shadow: 4px 6px 17px -1px rgb(204, 204, 204);
+                transform: translateY(-2px);
+            }
+        }
+        .info-box {
+            background: white;
+            height: 100px;
+            border: 3px solid white;
+            border-radius: 4px;
+            margin: 10px 0;
+            width: 100%;
+            display: flex;
+            flex: 1;
+            // justify-content: center;
+            .col-4 {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background: $primary;
+                i {
+                    font-size: 3rem;
+                    color: white;
+                }
+            }
+            .col-8 {
+                display: flex;
+                flex: 1;
+                justify-content: center;
+                align-items: center;
+                h3 {
+                    font-size: 18px;
+                    color: $secondary;
+                    text-align: center;
+                }
+            }
+        }
+    }
+}
+
+.dash-container {
+    padding: 3rem;
+    .card {
+        border: 4px solid white;
+        width: 100%;
+        height: 450px;
+        .card-header {
+            display: flex;
+            align-items: center;
+            color: white;
+            font-size: 20px;
+            shape-rendering: geometricPrecision;
+            background: $primary !important;
+            background-color: $primary !important;
+            i {
+                margin-right: 10px;
+            }
+        }
+        .card-body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            hr {
+                width: 100%;
+            }
+            .col-4 {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                i {
+                    font-size: 3rem;
+                    margin-right: 10px;
+                }
+                h4 {
+                    font-size: 16px;
+                    text-align: center;
+                }
+            }
+            .col-8 {
+                text-align: center;
+                color: grey;
+                font-weight: 700;
+                font-size: 26px;
+                h4 {
+                    font-size: 24px;
+                }
+                span {
+                    font-size: 28px;
+                    font-family: 'Anton', sans-serif;
+                    margin-right: 5px;
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .cards-container,
+    .dash-container {
+        padding: 0.6rem;
+    }
+    .dash-container {
+        .card-body {
+            .col-8 {
+                font-size: 20px !important;
+                h4 {
+                    font-size: 16px !important;
+                }
+                span {
+                    font-size: 20px !important;
+                    font-family: 'Anton', sans-serif;
+                    margin-right: 5px;
+                }
+            }
+        }
+    }
+    .info-box {
+        .col-8 {
+            h3 {
+                font-size: 14px !important;
+            }
+        }
+    }
+}
