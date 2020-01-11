@@ -15,8 +15,7 @@ class DevedoresModel{
     function index(){
         $DB = new Database();
         $conn = $DB->connection();
-        var_dump($conn);
-        $query = "SELECT * FROM Devedores INNER JOIN Dividas ON `Devedores.cpf` = `Dividas.cpf`";
+        $query = "SELECT * FROM devedores INNER JOIN dividas ON `cpf_cnpj` = `devedores_cpf/cnpj` ORDER BY STR_TO_DATE(vencimento, '%Y-%m-%d') ASC";
         $stmt = $conn->prepare($query);
         try{
             $stmt->execute();

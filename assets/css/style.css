@@ -193,6 +193,26 @@ body {
   margin-right: 5px;
 }
 
+.container-devedores {
+  padding: 3rem;
+}
+
+.container-devedores .card {
+  border: 3px solid white;
+}
+
+.container-devedores .card .card-header {
+  color: white;
+}
+
+.container-devedores .card .card-header.vencida {
+  background: #ff4b14;
+}
+
+.container-devedores .card .card-body h5 span {
+  margin: 0 6px;
+}
+
 @media only screen and (max-width: 768px) {
   .cards-container,
   .dash-container {
