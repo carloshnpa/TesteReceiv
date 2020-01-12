@@ -71,14 +71,8 @@ switch ($request) {
             require 'app/views/dividas/index.php';
         }
         break;
-    case '/jovens':
-        require 'app/views/dash/jovens.php';
-        break;
     case '/maiores':
         require 'app/views/dash/maiores.php';
-        break;
-    case '/ocorrencias':
-        require 'app/views/dash/ocorrencias.php';
         break;
     case '/vencimento':
         require 'app/views/dash/vencimento.php';

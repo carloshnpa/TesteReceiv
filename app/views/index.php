@@ -13,21 +13,8 @@ $valor2 = round($ctrl->somaAVencer()->soma, 2);
 <div class="container-fluid">
     <div class="cards-container">
         <div class="row">
-            <div class="col-md-3 col-12 col-sm-6">
-                <a href="/ocorrencias">
-                    <div class="info-box">
-                        <div class="col-4">
-                            <span>
-                                <i class="far fa-star"></i>
-                            </span>
-                        </div>
-                        <div class="col-8">
-                            <h3>Maiores Ocorrências de Dívida</h3>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-md-3 col-12 col-sm-6">
+
+            <div class="col-md-6 col-12">
                 <a href="/vencimento">
                     <div class="info-box">
                         <div class="col-4">
@@ -41,7 +28,7 @@ $valor2 = round($ctrl->somaAVencer()->soma, 2);
                     </div>
                 </a>
             </div>
-            <div class="col-md-3 col-12 col-sm-6">
+            <div class="col-md-6 col-12">
                 <a href="/maiores">
                     <div class="info-box">
                         <div class="col-4">
@@ -51,20 +38,6 @@ $valor2 = round($ctrl->somaAVencer()->soma, 2);
                         </div>
                         <div class="col-8">
                             <h3>Dívidas Mais Altas</h3>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-md-3 col-12 col-sm-6">
-                <a href="/jovens">
-                    <div class="info-box">
-                        <div class="col-4">
-                            <span>
-                                <i class="fas fa-child"></i>
-                            </span>
-                        </div>
-                        <div class="col-8">
-                            <h3>Pessoas Mais Jovens com Dívida</h3>
                         </div>
                     </div>
                 </a>

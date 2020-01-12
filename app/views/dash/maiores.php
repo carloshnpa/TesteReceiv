@@ -1,31 +1,31 @@
 <?php
-namespace App\Views\Devedores;
-use App\Controllers\DevedoresController;
+namespace App\Views\Dash;
+use App\Controllers\DashController;
 
 require('app/views/template/header.php');
-$ctrl = new DevedoresController();
-$devedores = array();
-if($_SERVER['REQUEST_METHOD'] == "POST"){
-    $devedores = $ctrl->search($_POST['nome']);
-}
+$ctrl = new DashController();
+$maiores = $ctrl->maioresDividas();
 ?>
-<div class="container-devedores">
+<div class="container-dividas">
     <div class="row">
-    <?php foreach($devedores as $devedor) { ?>
-        <div class="col-12 col-md-4 my-md-3 my-2 ">
-            <div class="card">
-                <div class="card-header <?=($devedor->vencimento < date("Y-m-d") ? 'vencida' : 'bg-success')?>">
-                    <h5 class="card-title"><?=$devedor->titulo?></h5>
-                </div>
-                <div class="card-body">
-                    <h4 class="card-title"><?=$devedor->nome?></h4>
-                    <h5 class="card-title">Valor<span>R$:</span><?=$devedor->valor?></h5>
-                    <p class="card-text">Vencimento: <?=date('d/m/Y', strtotime($devedor->vencimento))?> </p>
-                    <a href="/divida/<?=$devedor->id?>" class="btn btn-outline-warning">Ver tudo</a>
+        <?php foreach ($maiores as $divida) { ?>
+            <div class="col-12 col-md-4 my-md-3 my-2">
+                <div class="card">
+                    <div class="card-header <?= ($divida->vencimento < date("Y-m-d") ? 'vencida' : 'bg-success') ?>">
+                        <h5 class="text-dark"><?= $divida->titulo ?></h5>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Devedor: <?= $divida->nome ?></h5>
+                        <p class="card-text">Valor:<span> R$<?= $divida->valor ?></span></p>
+                        <p class="card-text">Vencimento:<span> <?= date('d/m/Y', strtotime($divida->vencimento)) ?></span></p>
+                        <form action="/dividas" method="post">
+                            <input type="hidden" name="id" value="<?= $divida->id ?>">
+                            <button type="submit" name="view" class="btn btn-outline-dark">Ver Dividada</button>
+                        </form>
+                    </div>
                 </div>
             </div>
-        </div>
-    <?php } ?>
+        <?php } ?>
     </div>
 </div>
 <?php

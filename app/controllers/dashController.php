@@ -19,19 +19,9 @@ class DashController{
         return $dash->aVencer();
     }
 
-    public function maisJovens(){
-        $dash =  new DashModel();
-        return $dash->jovens();
-    }
-
     public function maioresDividas(){
         $dash =  new DashModel();
         return $dash->maiores();
-    }
-
-    public function maiorOcorrencia(){
-        $dash =  new DashModel();
-        return $dash->ocorrencia();
     }
 
     public function pertoDoVencimento(){

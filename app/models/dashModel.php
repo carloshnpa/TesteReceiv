@@ -48,46 +48,10 @@ class DashModel{
         }
     }
 
-    function jovens(){
-        $DB = new Database();
-        $conn = $DB->connection();
-        $query = "SELECT SUM(valor) as soma, AVG(valor) as media FROM dividas WHERE STR_TO_DATE(vencimento, '%Y-%m-%d') >= :hoje AND EXTRACT(YEAR FROM vencimento) = :ano_atual";
-        $dates = array(
-            ":hoje"      => date('Y-m-d'),
-            ":ano_atual" => date('Y')
-        );
-        $stmt = $conn->prepare($query);
-        try{
-            $stmt->execute($dates);
-            return $stmt->fetch(PDO::FETCH_OBJ);
-        }catch(PDOException $e){
-            echo $e->getMessage();
-            return null;
-        }
-    }
-
-    function ocorrencia(){
-        $DB = new Database();
-        $conn = $DB->connection();
-        $query = "SELECT SUM(valor) as soma, AVG(valor) as media FROM dividas WHERE STR_TO_DATE(vencimento, '%Y-%m-%d') >= :hoje AND EXTRACT(YEAR FROM vencimento) = :ano_atual";
-        $dates = array(
-            ":hoje"      => date('Y-m-d'),
-            ":ano_atual" => date('Y')
-        );
-        $stmt = $conn->prepare($query);
-        try{
-            $stmt->execute($dates);
-            return $stmt->fetch(PDO::FETCH_OBJ);
-        }catch(PDOException $e){
-            echo $e->getMessage();
-            return null;
-        }
-    }
-
     function maiores(){
         $DB = new Database();
         $conn = $DB->connection();
-        $query = "SELECT SUM(valor) as soma, AVG(valor) as media FROM dividas WHERE STR_TO_DATE(vencimento, '%Y-%m-%d') >= :hoje AND EXTRACT(YEAR FROM vencimento) = :ano_atual";
+        $query = "SELECT * FROM dividas INNER JOIN devedores ON `devedores_cpf/cnpj` = `cpf_cnpj` ORDER BY valor DESC LIMIT 3";
         $dates = array(
             ":hoje"      => date('Y-m-d'),
             ":ano_atual" => date('Y')
@@ -95,7 +59,7 @@ class DashModel{
         $stmt = $conn->prepare($query);
         try{
             $stmt->execute($dates);
-            return $stmt->fetch(PDO::FETCH_OBJ);
+            return $stmt->fetchAll(PDO::FETCH_OBJ);
         }catch(PDOException $e){
             echo $e->getMessage();
             return null;
@@ -105,7 +69,7 @@ class DashModel{
     function vencimento(){
         $DB = new Database();
         $conn = $DB->connection();
-        $query = "SELECT SUM(valor) as soma, AVG(valor) as media FROM dividas WHERE STR_TO_DATE(vencimento, '%Y-%m-%d') >= :hoje AND EXTRACT(YEAR FROM vencimento) = :ano_atual";
+        $query = "SELECT * FROM dividas INNER JOIN devedores ON `devedores_cpf/cnpj` = `cpf_cnpj` WHERE STR_TO_DATE(vencimento, '%Y-%m-%d') >= :hoje AND EXTRACT(YEAR FROM vencimento) = :ano_atual ORDER BY STR_TO_DATE(vencimento, '%Y-%m-%d') ASC LIMIT 3";
         $dates = array(
             ":hoje"      => date('Y-m-d'),
             ":ano_atual" => date('Y')
@@ -113,7 +77,7 @@ class DashModel{
         $stmt = $conn->prepare($query);
         try{
             $stmt->execute($dates);
-            return $stmt->fetch(PDO::FETCH_OBJ);
+            return $stmt->fetchAll(PDO::FETCH_OBJ);
         }catch(PDOException $e){
             echo $e->getMessage();
             return null;
