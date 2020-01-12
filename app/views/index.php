@@ -1,12 +1,20 @@
 <?php
+$css = array(
+    "https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.css",
+);
 include(BASE_PATH . '/app/views/template/header.php');
+use App\Controllers\DashController;
+$ctrl = new DashController();
+$valor1 = round($ctrl->somaVencidos()->soma, 2);
+$valor2 = round($ctrl->somaAVencer()->soma, 2);
+
 ?>
 
 <div class="container-fluid">
     <div class="cards-container">
         <div class="row">
             <div class="col-md-3 col-12 col-sm-6">
-                <a href="/dash/ocorrencias">
+                <a href="/ocorrencias">
                     <div class="info-box">
                         <div class="col-4">
                             <span>
@@ -20,7 +28,7 @@ include(BASE_PATH . '/app/views/template/header.php');
                 </a>
             </div>
             <div class="col-md-3 col-12 col-sm-6">
-                <a href="/dash/vencimento">
+                <a href="/vencimento">
                     <div class="info-box">
                         <div class="col-4">
                             <span>
@@ -34,7 +42,7 @@ include(BASE_PATH . '/app/views/template/header.php');
                 </a>
             </div>
             <div class="col-md-3 col-12 col-sm-6">
-                <a href="/dash/maiores">
+                <a href="/maiores">
                     <div class="info-box">
                         <div class="col-4">
                             <span>
@@ -48,7 +56,7 @@ include(BASE_PATH . '/app/views/template/header.php');
                 </a>
             </div>
             <div class="col-md-3 col-12 col-sm-6">
-                <a href="/dash/jovens">
+                <a href="/jovens">
                     <div class="info-box">
                         <div class="col-4">
                             <span>
@@ -65,14 +73,16 @@ include(BASE_PATH . '/app/views/template/header.php');
     </div>
 
     <div class="dash-container">
+        <p id="valor1"><?=$valor1?></p>
+        <p id="valor2"><?=$valor2?></p>
         <div class="row">
             <div class="col-12 col-md-6">
                 <div class="card bg-white mb-3">
                     <div class="card-header">
-                        <i class="far fa-calendar-alt fa-2x"></i> Títulos a Vencer X Vencidos
+                        <i class="far fa-calendar-alt fa-2x"></i>Média(R$) Títulos a Vencer X Vencidos
                     </div> 
                     <div class="card-body">
-                        <!-- TODO :  add graph -->
+                        <canvas id="chart-dash" ></canvas>
                     </div>
                 </div>
             </div>
@@ -87,8 +97,8 @@ include(BASE_PATH . '/app/views/template/header.php');
                                 <i class="fas fa-bullseye" style="color: tomato;"></i>
                             </div>
                             <div class="col-8">
-                                <h4>Valor Vencido no Mês</h4>
-                                <span>R$</span>2341,90
+                                <h4>Valor Médio Vencido no Mês</h4>
+                                <span>R$</span><?=(round($ctrl->somaVencidos()->media, 2))?>
                             </div>
                         </div>
                         <hr>
@@ -97,8 +107,8 @@ include(BASE_PATH . '/app/views/template/header.php');
                                 <i class="fas fa-bullseye" style="color: grey;"></i>
                             </div>
                             <div class="col-8">
-                                <h4>Valor a Vencer no Mês</h4>
-                                <span>R$</span>2909,09
+                                <h4>Valor Médio a Vencer no Mês</h4>
+                                <span>R$</span><?=(round($ctrl->somaAVencer()->media, 2))?>
                             </div>
                         </div>
                     </div>
@@ -109,5 +119,10 @@ include(BASE_PATH . '/app/views/template/header.php');
 </div>
 
 <?php
+$scripts = array(
+    "https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.bundle.min.js",
+    "assets/js/dash.js"
+);
 include(BASE_PATH . '/app/views/template/footer.php');
 ?>
+

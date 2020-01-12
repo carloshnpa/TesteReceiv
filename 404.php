@@ -31,9 +31,15 @@
             font-size: 2em;
             font-weight: 400;
         }
+
+        h1 span{
+            font-size: 3rem;
+            font-weight: 600;
+            color: grey;
+        }
         
         p {
-            margin: 0 auto;
+            margin: 6px auto;
             width: 280px;
         }
         
@@ -46,11 +52,16 @@
                 font-size: 1.5em;
                 margin: 0 0 0.3em;
             }
+
+            h1 span{
+                font-size: 2em;
+            }
         }
     </style>
 </head>
 
 <body>
+    <h1><span>Erro 404</span></h1>
     <h1>Página não encontrada</h1>
     <p>Desculpe, mas a página solicitada não existe.</p>
 </body>

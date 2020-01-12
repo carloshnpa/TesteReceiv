@@ -15,6 +15,13 @@
     
     <!-- Custom CSS  -->
     <link rel="stylesheet" href="assets/css/style.css">
+    <?php 
+      if(isset($css)){
+        foreach($css as $c){
+          echo '<link rel="stylesheet" href="'. $c .'"';
+        }
+      }
+    ?>
 </head>
 
 <body>
@@ -33,20 +40,17 @@
                     <a class="nav-link" href="/">Dashboard <span class="sr-only">(current)</span></a>
                 </li>
             
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Devedores
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="/devedores/adicionar">Cadastro De Devedor</a>
-                        <a class="dropdown-item" href="devedores/pesquisa">Pesquisa de Devedor</a>
-                        <a class="dropdown-item" href="/devedores">Todos Devedores</a>
-                    </div>
+                <li class="nav-item">
+                    <a class="nav-link" href="/devedores">Devedores</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/dividas">Dividas</a>
                 </li>
             </ul>
-            <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="search" placeholder="Nome do devedor" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Pesquisar</button>
+            <form class="form-inline my-2 my-lg-0" method="POST" action="/devedores">
+                <input class="form-control mr-sm-2" type="search" placeholder="Nome do devedor" aria-label="Search" name="nome">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit" name="pesquisa">Pesquisar</button>
             </form>
         </div>
     </nav>
