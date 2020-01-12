@@ -1,0 +1,13 @@
+{
+    "name": "TesteRevict",
+    "version": "1.0.0",
+    "main": "index.js",
+    "repository": "https://github.com/carloshnpa/TesteReceiv.git",
+    "license": "MIT",
+    "dependencies": {},
+    "devDependencies": {
+        "browser-sync": "^2.26.7",
+        "gulp": "^4.0.2",
+        "gulp-connect-php": "^1.0.3"
+    }
+}

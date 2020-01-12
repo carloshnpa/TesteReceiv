@@ -157,7 +157,13 @@ body {
     .card {
         border: 3px solid white;
         .card-header {
+            display: flex;
+            align-items: center;
             color: white;
+            font-size: 20px;
+            shape-rendering: geometricPrecision;
+            background: $primary !important;
+            background-color: $primary !important;
             &.vencida {
                 background: $primary;
             }
@@ -184,12 +190,10 @@ body {
 }
 
 .container-dividas {
-    .card-info-divida {
-        .card-header {
-            color: $secondary;
-            font-size: 28px;
-            font-weight: 600;
-        }
+    .card-header {
+        color: $secondary;
+        font-size: 28px;
+        font-weight: 600;
     }
 }
 
@@ -198,9 +202,21 @@ body {
     display: inline-block;
 }
 
+.btn-custom {
+    border-color: $secondary !important;
+    color: $secondary;
+    &:hover {
+        color: white;
+        background-color: $primary !important;
+        border-color: $primary !important;
+    }
+}
+
 @media only screen and (max-width: 768px) {
     .cards-container,
-    .dash-container {
+    .dash-container,
+    .container-devedores,
+    .container-dividas {
         padding: 0.6rem;
     }
     .dash-container {
@@ -223,6 +239,18 @@ body {
             h3 {
                 font-size: 14px !important;
             }
+        }
+    }
+    .container-dividas {
+        display: flex;
+        flex: 1;
+        justify-content: center;
+        align-items: center;
+    }
+    .container-devedores,
+    .container-dividas {
+        .card {
+            margin: 4px auto;
         }
     }
 }

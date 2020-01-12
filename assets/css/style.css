@@ -211,7 +211,17 @@ body {
 
 .container-devedores .card .card-header,
 .container-dividas .card .card-header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   color: white;
+  font-size: 20px;
+  shape-rendering: geometricPrecision;
+  background: #ff4b14 !important;
+  background-color: #ff4b14 !important;
 }
 
 .container-devedores .card .card-header.vencida,
@@ -240,7 +250,7 @@ body {
           justify-content: right;
 }
 
-.container-dividas .card-info-divida .card-header {
+.container-dividas .card-header {
   color: #1e2030;
   font-size: 28px;
   font-weight: 600;
@@ -251,9 +261,22 @@ body {
   display: inline-block;
 }
 
+.btn-custom {
+  border-color: #1e2030 !important;
+  color: #1e2030;
+}
+
+.btn-custom:hover {
+  color: white;
+  background-color: #ff4b14 !important;
+  border-color: #ff4b14 !important;
+}
+
 @media only screen and (max-width: 768px) {
   .cards-container,
-  .dash-container {
+  .dash-container,
+  .container-devedores,
+  .container-dividas {
     padding: 0.6rem;
   }
   .dash-container .card-body .col-8 {
@@ -269,6 +292,24 @@ body {
   }
   .info-box .col-8 h3 {
     font-size: 14px !important;
+  }
+  .container-dividas {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-flex: 1;
+        -ms-flex: 1;
+            flex: 1;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  .container-devedores .card,
+  .container-dividas .card {
+    margin: 4px auto;
   }
 }
 

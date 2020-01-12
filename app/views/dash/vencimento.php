@@ -10,13 +10,13 @@ $vencimento = $ctrl->pertoDoVencimento();
     <div class="row">
         <?php foreach ($vencimento as $divida) { ?>
             <div class="col-12 col-md-4 my-md-3 my-2">
-                <div class="card">
-                    <div class="card-header <?= ($divida->vencimento < date("Y-m-d") ? 'vencida' : 'bg-success') ?>">
-                        <h5 class="text-dark"><?= $divida->titulo ?></h5>
+                <div class="card m-2">
+                    <div class="card-header">
+                        <h5 class=""><?= $divida->titulo ?></h5>
                     </div>
                     <div class="card-body">
                         <h5 class="card-title">Devedor: <?= $divida->nome ?></h5>
-                        <p class="card-text">Valor:<span> R$<?= $divida->valor ?></span></p>
+                        <p class="card-text">Valor:<span> R$ <?= $divida->valor ?></span></p>
                         <p class="card-text">Vencimento:<span> <?= date('d/m/Y', strtotime($divida->vencimento)) ?></span></p>
                         <form action="/dividas" method="post">
                             <input type="hidden" name="id" value="<?= $divida->id ?>">

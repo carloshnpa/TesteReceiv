@@ -43,8 +43,8 @@ CREATE TABLE IF NOT EXISTS `testerevict`.`dividas` (
   CONSTRAINT `fk_dividas_devedores`
     FOREIGN KEY (`devedores_cpf/cnpj`)
     REFERENCES `testerevict`.`devedores` (`cpf_cnpj`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE)
 ENGINE = InnoDB;
 
 

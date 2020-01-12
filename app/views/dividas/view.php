@@ -50,13 +50,13 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     }
     ?>
     <!-- / Fim mensagem de retorno  -->
-    <div class="jumbotron">
+    <div class="jumbotron mt-4 mt-md-2">
         <div class="container">
             <div class="row">
                 <div class="col-12">
                     <div class="invoice-title">
                         <h2><?=$divida->titulo?></h2>
-                        <h3 class="pull-right">ID #<?=$divida->id?></h3>
+                        <h3 class="pull-right">ID - #<?=$divida->id?></h3>
                         <div class="">
                             <button class="btn btn-warning text-white mr-3" data-toggle="modal" data-target="#modal-edit"><i class="far fa-edit"></i> Editar</button>
                             <button class="btn btn-danger" data-toggle="modal" data-target="#modal-delete"><i class="fas fa-user-minus"></i> Excluir Regristro</button>

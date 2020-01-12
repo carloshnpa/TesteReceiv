@@ -75,7 +75,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <!-- / Fim mensagem de retorno  -->
     <div class="row mb-3">
         <div class="col-12 d-flex justify-content-end">
-            <button type="button" class="btn btn-dark " data-toggle="modal" data-target="#modelId">
+            <button type="button" class="btn btn-outline-dark bg-white p-3 m-3 btn-custom" data-toggle="modal" data-target="#modelId">
                 Adicionar Devedor
             </button>
         </div>
@@ -94,7 +94,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                                     echo $d1->diff($d2)->format('%y') ?> </p>
                         <form action="/devedores" method="post">
                             <input type="hidden" name="id" value="<?= $devedor->cpf_cnpj ?>">
-                            <button type="submit" name="view" class="btn btn-outline-dark">Ver Dividadas</button>
+                            <button type="submit" name="view" class="btn btn-outline-dark">Ver Dividas</button>
                         </form>
                     </div>
                 </div>

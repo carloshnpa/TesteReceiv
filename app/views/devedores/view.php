@@ -56,7 +56,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
         }
     ?>
     <!-- / Fim mensagem de retorno  -->
-    <div class="row">
+    <div class="row my-2 mb-md-3">
         <div class="col-12">
             <div class="card card-info-devedor">
                 <div class="card-body">
@@ -69,7 +69,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
                                                             $d2 = new DateTime($devedor->nascimento);
                                                             echo $d1->diff($d2)->format('%y') ?> anos</p>
                         </div>
-                        <div class="col-12 col-md-6 d-flex justify-content-end">
+                        <div class="col-12 col-md-6 ml-auto mt-3 mt-md-0">
                                 <button class="btn btn-warning text-white" data-toggle="modal" data-target="#modal-edit"><i class="far fa-edit"></i> Editar</button>
                                 <button class="btn btn-danger ml-3" data-toggle="modal" data-target="#modal-delete"><i class="fas fa-user-minus"></i> Excluir Regristro</button>
                         </div>
