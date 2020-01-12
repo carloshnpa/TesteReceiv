@@ -24,20 +24,32 @@ class DividasController{
     }
 
     public function delete($data){
-
+        $dividas = new DividasModel();
+        return $dividas->delete(array(":id" => $data));
     }
 
     public function update($id, $data){
-
+        $dividas = new DividasModel();
+        $data[':vencimento'] = implode('-', array_reverse(explode('/', $data[':vencimento'])));
+        $data[':id'] = intval($id);
+        $data[':valor'] = floatval($data[':valor']);
+        $data[':cpf'] = intval($data[':cpf']);
+        unset($data['atualiza']);
+        unset($data['id']);
+        return $dividas->update($data);
     }
 
     public function save($data){
-
+        $dividas = new DividasModel();
+        $data[':vencimento'] = implode('-', array_reverse(explode('/', $data[':vencimento'])));
+        $data[':valor'] = floatval($data[':valor']);
+        unset($data['adiciona']);
+        return $dividas->create($data);
     }
 
-    public function search($name){
+    public function pesquisa($id){
         $devedores = new DividasModel();
-        return $devedores->pesquisa(array(":nome" => '%'. $name . '%'));
+        return $devedores->pesquisa(array(":id" => $id));
     }
 
 }

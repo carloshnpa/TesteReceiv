@@ -11,7 +11,7 @@ define('DB_PASS', '1234');
 define('DB_PORT', '3306');
 
 // development 
-define("ENV", 'develepment');
+define("ENV", 'development');
 // define("ENV", 'production');
 ini_set('display_errors', true);
 error_reporting(E_ALL);

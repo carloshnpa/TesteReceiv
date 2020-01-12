@@ -57,11 +57,11 @@ switch ($request) {
             }
             // Deletar Dívida [Controlador]
             elseif(isset($_POST['delete'])){
-                require 'app/views/devedores/delete.php';
+                require 'app/views/dividas/index.php';
             }
             // Update de Dívida [Controlador]
             elseif(isset($_POST['atualiza'])){
-                require 'app/views/devedores/update.php';
+                require 'app/views/dividas/view.php';
             }else{
                 http_response_code(404);
                 require '404.php';

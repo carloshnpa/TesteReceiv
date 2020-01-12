@@ -31,11 +31,11 @@ class DividasModel{
     function pesquisa($nome){
         $DB = new Database();
         $conn = $DB->connection();
-        $query = "SELECT * FROM devedores INNER JOIN dividas ON `cpf_cnpj` = `devedores_cpf/cnpj` WHERE `nome` LIKE :nome";
+        $query = "SELECT * FROM devedores INNER JOIN dividas ON `cpf_cnpj` = `devedores_cpf/cnpj` WHERE id = :id";
         $stmt = $conn->prepare($query);
         try{
             $stmt->execute($nome);
-            return $stmt->fetchAll(PDO::FETCH_OBJ);
+            return $stmt->fetch(PDO::FETCH_OBJ);
         }catch(PDOException $e){
             if(ENV == 'development'){
                 echo $e->getMessage();
@@ -57,6 +57,54 @@ class DividasModel{
                 echo $e->getMessage();
             }
             return null;
+        }
+    }
+
+    function update($data){
+        $DB = new Database();
+        $conn = $DB->connection();
+        $query = "UPDATE dividas SET `devedores_cpf/cnpj` = :cpf, `titulo` = :titulo, `vencimento` = :vencimento, `valor`= :valor WHERE id = :id";
+        $stmt = $conn->prepare($query);
+        try{
+            $stmt->execute($data);
+            return 1;
+        }catch(PDOException $e){
+            if(ENV == 'development'){
+                echo $e->getMessage();
+            }
+            return 0;
+        }
+    }
+
+    function create($data){
+        $DB = new Database();
+        $conn = $DB->connection();
+        $query = "INSERT INTO dividas (`devedores_cpf/cnpj`, `titulo`, `vencimento`, `valor`) VALUES (:cpf, :titulo, :vencimento, :valor)";
+        $stmt = $conn->prepare($query);
+        try{
+            $stmt->execute($data);
+            return 1;
+        }catch(PDOException $e){
+            if(ENV == 'development'){
+                echo $e->getMessage();
+            }
+            return 0;
+        }
+    }
+
+    function delete($id){
+        $DB = new Database();
+        $conn = $DB->connection();
+        $query = "DELETE FROM dividas WHERE id = :id";
+        $stmt = $conn->prepare($query);
+        try{
+            $stmt->execute($id);
+            return 1;
+        }catch(PDOException $e){
+            if(ENV == 'development'){
+                echo $e->getMessage();
+            }
+            return 0;
         }
     }
 }
