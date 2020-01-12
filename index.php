@@ -68,7 +68,7 @@ switch ($request) {
                 break;
             }
         }else{
-            require 'app/views/devedores/index.php';
+            require 'app/views/dividas/index.php';
         }
         break;
     case '/jovens':
