@@ -10,12 +10,17 @@ class DividasController{
     }
 
     public function all(){
-        $devedores = new DividasModel();
-        return $devedores->index();
+        $dividas = new DividasModel();
+        return $dividas->index();
     }
 
     public function getByID($data){
-        $devedores = new DividasModel();
+        $dividas = new DividasModel();
+    }
+
+    public function getDividasByDevedor($id){
+        $dividas = new DividasModel();
+        return $dividas->find(array(":cpf" => $id));
     }
 
     public function delete($data){

@@ -20,11 +20,18 @@ class DevedoresController{
     }
 
     public function delete($data){
-
+        $devedores = new DevedoresModel();
+        return $devedores->delete(array(":id" => $data));
     }
 
     public function update($id, $data){
-
+        $devedores = new DevedoresModel();
+        $data[':cpf'] = intval(preg_replace("/[^a-zA-Z0-9]/", "", $data[':cpf']));
+        $data[':nascimento'] = implode('-', array_reverse(explode('/', $data[':nascimento'])));
+        unset($data['atualiza']);
+        unset($data['id']);
+        $data[':id'] = $id;
+        return $devedores->update($id, $data);
     }
 
     public function save($data){

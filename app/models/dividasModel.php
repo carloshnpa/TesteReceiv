@@ -21,7 +21,9 @@ class DividasModel{
             $stmt->execute();
             return $stmt->fetchAll(PDO::FETCH_OBJ);
         }catch(PDOException $e){
-            echo $e->getMessage();
+            if(ENV == 'development'){
+                echo $e->getMessage();
+            }
             return null;
         }
     }
@@ -35,7 +37,25 @@ class DividasModel{
             $stmt->execute($nome);
             return $stmt->fetchAll(PDO::FETCH_OBJ);
         }catch(PDOException $e){
-            echo $e->getMessage();
+            if(ENV == 'development'){
+                echo $e->getMessage();
+            }
+            return null;
+        }
+    }
+
+    function find($cpf){
+        $DB = new Database();
+        $conn = $DB->connection();
+        $query = "SELECT * FROM devedores INNER JOIN dividas ON `cpf_cnpj` = `devedores_cpf/cnpj` WHERE cpf_cnpj = :cpf";
+        $stmt = $conn->prepare($query);
+        try{
+            $stmt->execute($cpf);
+            return $stmt->fetchAll(PDO::FETCH_OBJ);
+        }catch(PDOException $e){
+            if(ENV == 'development'){
+                echo $e->getMessage();
+            }
             return null;
         }
     }

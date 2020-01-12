@@ -27,12 +27,12 @@ switch ($request) {
                 require 'app/views/devedores/view.php';
             }
             // Deletar Devedor e suas respectivas Dívidas [Controlador]
-            elseif(isset($_POST['deleta'])){
-                require 'app/views/devedores/delete.php';
+            elseif(isset($_POST['delete'])){
+                require 'app/views/devedores/index.php';
             }
             // Update de Devedor [Controlador]
             elseif(isset($_POST['atualiza'])){
-                require 'app/views/devedores/update.php';
+                require 'app/views/devedores/view.php';
             }
             // Erro de Handler Request
             else{
@@ -56,7 +56,7 @@ switch ($request) {
                 require 'app/views/dividas/view.php';
             }
             // Deletar Dívida [Controlador]
-            elseif(isset($_POST['deleta'])){
+            elseif(isset($_POST['delete'])){
                 require 'app/views/devedores/delete.php';
             }
             // Update de Dívida [Controlador]

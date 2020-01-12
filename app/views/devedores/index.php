@@ -7,11 +7,15 @@ use DateTime;
 
 require(BASE_PATH . '/app/views/template/header.php');
 $ctrl = new DevedoresController();
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (isset($_POST['nome'])) {
         $devedores = $ctrl->search($_POST['nome']);
     }elseif(isset($_POST['adiciona'])){
         $resposta = $ctrl->save($_POST);
+        $devedores = $ctrl->all();
+    }elseif(isset($_POST['delete'])){
+        $respostaDel = $ctrl->delete($_POST['id']);
         $devedores = $ctrl->all();
     }
 } else {
@@ -20,8 +24,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 ?>
 
 <div class="container-devedores">
-    <!-- Mensagem de Retorno para Cadastro  -->
     <?php
+        // Mensagem de Retorno para Cadastro 
         if(isset($resposta)){
             if($resposta == 1){
                 echo '
@@ -35,7 +39,31 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             }else{
                 echo '
                 <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                    <strongErro!</strong> Não foi possível realizar cadastro.
+                    <strong>Erro!</strong> Não foi possível realizar cadastro.
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            ';
+            }
+        }
+
+        // Mensagem de retorno exclusão 
+
+        if(isset($respostaDel)){
+            if($respostaDel == 1){
+                echo '
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        <strong>OK!</strong> Exclusão Realizada com sucesso.
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                ';
+            }else{
+                echo '
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <strong>Erro!</strong> Não foi possível deletar cadastro.
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -66,7 +94,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                                     echo $d1->diff($d2)->format('%y') ?> </p>
                         <form action="/devedores" method="post">
                             <input type="hidden" name="id" value="<?= $devedor->cpf_cnpj ?>">
-                            <button type="submit" name="view" class="btn btn-outline-dark">Ver Dividads</button>
+                            <button type="submit" name="view" class="btn btn-outline-dark">Ver Dividadas</button>
                         </form>
                     </div>
                 </div>

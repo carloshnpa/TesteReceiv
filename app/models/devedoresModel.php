@@ -47,11 +47,11 @@ class DevedoresModel{
     function getByID($id){
         $DB = new Database();
         $conn = $DB->connection();
-        $query = "SELECT * FROM devedores INNER JOIN dividas ON `cpf_cnpj` = `devedores_cpf/cnpj` WHERE `cpf_cnpj` = :id ORDER BY STR_TO_DATE(vencimento, '%Y-%m-%d') ASC";
+        $query = "SELECT * FROM devedores WHERE `cpf_cnpj` = :id";
         $stmt = $conn->prepare($query);
         try{
             $stmt->execute($id);
-            return $stmt->fetchAll(PDO::FETCH_OBJ);
+            return $stmt->fetch(PDO::FETCH_OBJ);
         }catch(PDOException $e){
             if(ENV == 'development'){
                 echo $e->getMessage();
@@ -67,6 +67,38 @@ class DevedoresModel{
         $stmt = $conn->prepare($query);
         try{
             $stmt->execute($data);
+            return 1;
+        }catch(PDOException $e){
+            if(ENV == 'development'){
+                echo $e->getMessage();
+            }
+            return 0;
+        }
+    }
+
+    function update($id, $data){
+        $DB = new Database();
+        $conn = $DB->connection();
+        $query = "UPDATE devedores SET `cpf_cnpj` = :cpf, `nome` = :nome, `nascimento` = :nascimento, `cep` = :cep, `endereco` = :endereco, `cidade` = :cidade WHERE cpf_cnpj = :id";
+        $stmt = $conn->prepare($query);
+        try{
+            $stmt->execute($data);
+            return 1;
+        }catch(PDOException $e){
+            if(ENV == 'development'){
+                echo $e->getMessage();
+            }
+            return 0;
+        }
+    }
+
+    function delete($id){
+        $DB = new Database();
+        $conn = $DB->connection();
+        $query = "DELETE FROM devedores WHERE cpf_cnpj = :id";
+        $stmt = $conn->prepare($query);
+        try{
+            $stmt->execute($id);
             return 1;
         }catch(PDOException $e){
             if(ENV == 'development'){

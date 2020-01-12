@@ -239,4 +239,13 @@ body {
     font-size: 14px !important;
   }
 }
+
+.card-info-devedor h5 {
+  font-size: 28px;
+  font-weight: 600;
+}
+
+.card-info-devedor p span {
+  font-weight: 600;
+}
 /*# sourceMappingURL=style.css.map */
