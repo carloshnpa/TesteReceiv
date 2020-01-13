@@ -65,9 +65,11 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
                             <h5 class="card-title"><?=$devedor->nome?></h5>
                             <p class="card-text"><span>CPF:</span> <?=$devedor->cpf_cnpj?></p>
                             <p class="card-text"><span>Endereço:</span> <?=$devedor->endereco . ' ' . $devedor->cidade?></p>
-                            <p class="card-text"><span>Idade:</span> <?php $d1 = new DateTime(date('Y-d-m'));
-                                                            $d2 = new DateTime($devedor->nascimento);
-                                                            echo $d1->diff($d2)->format('%y') ?> anos</p>
+                            <?php
+                                $diff = abs(strtotime(date('Y-m-d')) - strtotime($devedor->nascimento));
+                                $years = floor($diff / (365*60*60*24));
+                            ?>
+                            <p class="card-text"><span>Idade:</span> <?php echo $years?> anos</p>
                         </div>
                         <div class="col-12 col-md-6 ml-auto mt-3 mt-md-0">
                                 <button class="btn btn-warning text-white" data-toggle="modal" data-target="#modal-edit"><i class="far fa-edit"></i> Editar</button>

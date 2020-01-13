@@ -89,9 +89,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     </div>
                     <div class="card-body">
                         <h5 class="card-text">Cidade:<span><?= $devedor->cidade ?></span></h5>
-                        <p class="card-text">Idade: <?php $d1 = new DateTime(date('Y-d-m'));
-                                                    $d2 = new DateTime($devedor->nascimento);
-                                                    echo $d1->diff($d2)->format('%y') ?> </p>
+                        <?php
+                            $diff = abs(strtotime(date('Y-m-d')) - strtotime($devedor->nascimento));
+                            $years = floor($diff / (365*60*60*24));
+                        ?>
+                        <p class="card-text">Idade: <?php echo $years ?> anos</p>
                         <form action="/devedores" method="post">
                             <input type="hidden" name="id" value="<?= $devedor->cpf_cnpj ?>">
                             <button type="submit" name="view" class="btn btn-outline-dark">Ver Dividas</button>
