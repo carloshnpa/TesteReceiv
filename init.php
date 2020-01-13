@@ -4,10 +4,10 @@
 
 define('BASE_PATH', dirname(__FILE__));
 
-define('DB_HOST', '127.0.0.1');
-define('DB_NAME', 'testerevict');
-define('DB_USER', 'carlos');
-define('DB_PASS', '1234');
+define('DB_HOST', 'tkck4yllxdrw0bhi.cbetxkdyhwsb.us-east-1.rds.amazonaws.com');
+define('DB_NAME', 'pnodexcgsiezueds');
+define('DB_USER', 'himml0y75cbd2imu');
+define('DB_PASS', 'kxxib7q72xqruvgl');
 define('DB_PORT', '3306');
 
 // development 
