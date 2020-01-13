@@ -20,7 +20,7 @@ $maiores = $ctrl->maioresDividas();
                         <p class="card-text">Vencimento:<span> <?= date('d/m/Y', strtotime($divida->vencimento)) ?></span></p>
                         <form action="/dividas" method="post">
                             <input type="hidden" name="id" value="<?= $divida->id ?>">
-                            <button type="submit" name="view" class="btn btn-outline-dark">Ver Dividada</button>
+                            <button type="submit" name="view" class="btn btn-outline-dark">Ver Divida</button>
                         </form>
                     </div>
                 </div>
